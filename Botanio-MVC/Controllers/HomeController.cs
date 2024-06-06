@@ -1,21 +1,40 @@
+using Botanio_MVC.Data;
 using Botanio_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Botanio_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            //return View();
+
+            try
+            {
+                // Get all plants from the database
+                var plants = await _context.Plants
+                    .Include(p => p.Species)
+                    .Include(p => p.Habitat)
+                    .Include(p => p.CareInstructions)
+                    .ToListAsync();
+
+
+                // Return JSON for testing
+                return Json(plants);
+            } catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
         }
 
         public IActionResult Privacy()
