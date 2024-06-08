@@ -37,6 +37,32 @@ namespace Botanio_MVC.Controllers
             }
         }
 
+        // Route for specific plant
+        // GET: /:id
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Plant(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            // Get plant from the database
+            var plant = await _context.Plants
+                .Include(p => p.Species)
+                .Include(p => p.Habitat)
+                .Include(p => p.CareInstructions)
+                .FirstOrDefaultAsync(p => p.PlantId == id);
+
+            if (plant == null)
+            {
+                return NotFound();
+            }
+
+            // Return view with plant
+            return View(plant);
+        }
+
         public IActionResult Privacy()
         {
             return View();

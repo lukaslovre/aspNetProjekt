@@ -65,3 +65,38 @@ body {
     background-color: #3B6E4D;
     color: white;
 }
+
+/*Plant details*/
+
+.left-side{
+    background-color: rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4rem;
+    padding: 1rem;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    aspect-ratio: 1;
+}
+
+.background-dark {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+}
+
+.info-tags {
+    background-color: hsla(147,50%,75%,0.2);
+    font-size: 14px;
+    font-weight:600;
+    color: #9FDFBC;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.care-icons {
+    font-size: 24px; /* Larger icons */
+    color: #4CAF50; /* Icon color */
+    margin-right: 5px;
+}

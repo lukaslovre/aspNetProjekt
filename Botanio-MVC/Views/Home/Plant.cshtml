@@ -1,0 +1,34 @@
+﻿@model Botanio_MVC.Models.Plant
+
+@{
+    ViewData["Title"] = "Plant";
+}
+
+<div class="container-fluid py-5">
+    <div class="row align-items-center g-0">
+        <div class="col-md-6 left-side">
+            <img src="@Model.ImageUrl" alt="Lotus S. Plantus" class="img-fluid">
+        </div>
+        <div class="col-md-6" style="padding-left: 4rem;">
+            <h2 style="font-size:2rem; font-weight:600;">@Model.Name</h2>
+            <h3 style="font-size: 1.5rem; color: #BFBFBF; font-style:italic">@Model.ScientificName</h3>
+            <div class="mb-3">
+                <span class="info-tags">@Model.Habitat.Climate</span>
+                <span class="info-tags">@Model.Habitat.Location</span>
+            </div>
+            <p style="color: #E6E6E6;">@Model.Description</p>
+            <div class="mb-3">
+                <span class="care-icons">&#128167;</span> @Model.CareInstructions.WateringInstructions
+            </div>
+            <div class="mb-3">
+                <span class="care-icons">&#9728;</span> @Model.CareInstructions.SunlightInstructions
+            </div>
+            <div class="mb-3">
+                <span class="care-icons">🌡️</span> @Model.CareInstructions.TemperatureRangeLow °F - @Model.CareInstructions.TemperatureRangeHigh °F
+            </div>
+            <div>
+                <span class="care-icons">✂️</span> @Model.CareInstructions.PruningInstructions
+            </div>
+        </div>
+    </div>
+</div>
