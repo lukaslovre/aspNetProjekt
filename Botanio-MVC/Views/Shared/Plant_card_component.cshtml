@@ -1,0 +1,15 @@
+﻿@model Plant
+
+
+<div class="container py-5">
+    <div class="card card-custom" >
+        <img src="@Model.ImageUrl" class="card-img-top" alt="Plant Image" style="border-radius: 1rem;">
+        <div class="card-body card-body-custom">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">@Model.Description</p>
+        </div>
+        <div class="card-footer card-footer-custom">
+            <a href="#" class="plant-card-button">More info</a>
+        </div>
+    </div>
+</div>

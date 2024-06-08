@@ -18,5 +18,50 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #2F2B1D;
+    margin-bottom: 60px;
+}
+
+*{
+    color: white;
+}
+
+.card-custom {
+    border-radius: 1rem; /* Rounded corners */
+    /*overflow: hidden;  Ensures the content fits the rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
+    background-color: rgba(255,255,255, 0.2); /* White background with 80% opacity */
+}
+
+.card-body-custom {
+    padding: 20px; /* Spacing inside the card */
+    text-align: center;
+}
+
+.card-footer-custom {
+    /*text-align: center;*/ /* Centered text */
+    /*padding: 10px 20px;*/ /* Padding inside the footer */
+}
+
+.card-text {
+    color: #D9D9D9;
+    font-size: 14px;
+}
+
+
+.plant-card-button {
+    padding: 0.75rem 0;
+    width: 100%;
+    display: block;
+    background-color: #437057;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 1px rgba(0,0,0,0.075);
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+}
+.plant-card-button:hover{
+    background-color: #3B6E4D;
+    color: white;
 }
