@@ -51,14 +51,14 @@ namespace Botanio_MVC.Controllers
 
             if (plant == null)
             {
-                return View("Index", FormData.Empty(_context));
+                return View("PlantForm", FormData.Empty(_context));
             }
 
             FormData formData = FormData.Empty(_context);
             formData.Plant = plant;
 
             // Return view with plant
-            return View("Index", formData);
+            return View("PlantForm", formData);
         }
 
         // Add new plant to the database
