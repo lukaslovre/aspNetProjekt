@@ -105,6 +105,68 @@ namespace Botanio_MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /*
+         *      HABITAT ROUTES
+         */
+
+        // Render the habitat form
+        // GET: /habitat/:id
+        [HttpGet("habitat/{id}")]
+        public async Task<IActionResult> Habitat(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Get habitat from the database
+            var habitat = await _context.Habitats.FindAsync(id);
+
+            if (habitat == null)
+            {
+                return View("HabitatForm", new Habitat());
+            }
+
+            // Return view with habitat
+            return View("HabitatForm", habitat);
+        }
+
+        // Add or update habitat
+        // POST: /habitat
+        [HttpPost("habitat")]
+        public async Task<IActionResult> AddHabitat([FromForm] Habitat habitat)
+        {
+            // Check if the habitat with the habitat.habitatId already exists
+            var existingHabitat = await _context.Habitats.FindAsync(habitat.HabitatId);
+
+            // If the habitat does not exist, create a new habitat
+            if (existingHabitat == null)
+            {
+                Habitat newHabitat = new Habitat
+                {
+                    Name = habitat.Name,
+                    Climate = habitat.Climate,
+                    Location = habitat.Location,
+                    SoilType = habitat.SoilType
+                };
+
+                _context.Habitats.Add(newHabitat);
+                _context.SaveChanges();
+
+            } else
+            {
+                // If the habitat exists, update the existing habitat
+                existingHabitat.Name = habitat.Name;
+                existingHabitat.Climate = habitat.Climate;
+                existingHabitat.Location = habitat.Location;
+                existingHabitat.SoilType = habitat.SoilType;
+
+                _context.Habitats.Update(existingHabitat);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
 
 
 

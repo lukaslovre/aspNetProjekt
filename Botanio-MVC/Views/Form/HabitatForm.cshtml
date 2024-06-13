@@ -1,0 +1,30 @@
+﻿@model Botanio_MVC.Models.Habitat
+
+<div class="container mt-5">
+    <h2>Habitat Form</h2>
+    @* Send a POST request to /form/habitat, or maybe use the ASP.NET core way to specify that it is FormController.cs -> AddHabitat method *@
+    <form asp-controller="Form" asp-action="AddHabitat" method="post">
+        <div class="form-group">
+            <label for="habitatId">Habitat ID</label>
+            <input type="number" class="form-control" id="habitatId" name="habitatId" value="@Model.HabitatId">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="@Model.Name" required>
+        </div>
+        <div class="form-group">
+            <label for="climate">Climate</label>
+            <input type="text" class="form-control" id="climate" name="climate" value="@Model.Climate">
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location" name="location" value="@Model.Location">
+        </div>
+        <div class="form-group">
+            <label for="soilType">Soil Type</label>
+            <input type="text" class="form-control" id="soilType" name="soilType" value="@Model.SoilType">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
