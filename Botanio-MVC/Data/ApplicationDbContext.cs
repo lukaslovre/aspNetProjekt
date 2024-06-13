@@ -89,7 +89,7 @@ namespace Botanio_MVC.Data
                     Name = "Fiddle Leaf Fig",
                     ScientificName = "Ficus lyrata",
                     Description = "The Fiddle Leaf Fig is a popular indoor plant featuring large, violin-shaped leaves.",
-                    ImageUrl = "fiddle-leaf-fig",
+                    ImageUrl = "fiddle-leaf-fig.webp",
                     SpeciesId = 1,
                     HabitatId = 1,
                     CareInstructionsId = 1
