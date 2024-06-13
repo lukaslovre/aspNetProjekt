@@ -28,7 +28,7 @@ body {
 
 .card-custom {
     border-radius: 1rem; /* Rounded corners */
-    /*overflow: hidden;  Ensures the content fits the rounded corners */
+    height: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
     background-color: rgba(255,255,255, 0.2); /* White background with 80% opacity */
 }

@@ -6,7 +6,8 @@
 
 <div class="container-fluid py-5">
     <div class="align-end" style="margin-bottom:3rem;">
-        <a href="/form/plant/@Model.PlantId" class="btn btn-primary">Edit</a>
+        <a href="/form/plant/@Model.PlantId" class="btn btn-primary" style="margin-right: 1rem;">Edit</a>
+        <button onclick="fetchDeletePlant(@Model.PlantId)" class="btn btn-danger">Delete</button>
     </div>
 
 
@@ -38,3 +39,24 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function fetchDeletePlant(plantId) {
+            console.log("Deleting" + plantId);
+
+            // DELETE: /delete/plant/:id
+            fetch(`/delete/plant/${plantId}`, {
+                method: 'DELETE',
+            })
+                .then(response => response.text())
+                .then(data => {
+                    window.location.href = "/";
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+        }
+    </script>
+}
