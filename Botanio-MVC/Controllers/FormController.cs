@@ -18,7 +18,7 @@ namespace Botanio_MVC.Controllers
         }
 
         // GET: /
-        // just return the view
+        // Return JSON of all plants
         [HttpGet]
         public IActionResult Index()
         {
@@ -32,8 +32,15 @@ namespace Botanio_MVC.Controllers
             return Json(plants);
         }
 
-        // Route for specific plant
-        // GET: /:id
+
+
+        /*
+         *      PLANT ROUTES
+         */
+
+
+        // Render the plant form
+        // GET: /plant/:id
         [HttpGet("plant/{id}")]
         public async Task<IActionResult> Plant(int? id)
         {
@@ -53,12 +60,14 @@ namespace Botanio_MVC.Controllers
             {
                 return View("PlantForm", FormData.Empty(_context));
             }
+            else
+            {
+                FormData formData = FormData.Empty(_context);
+                formData.Plant = plant;
 
-            FormData formData = FormData.Empty(_context);
-            formData.Plant = plant;
+                return View("PlantForm", formData);
+            }
 
-            // Return view with plant
-            return View("PlantForm", formData);
         }
 
         // Add new plant to the database
@@ -101,9 +110,12 @@ namespace Botanio_MVC.Controllers
                 _context.SaveChanges();
             }
 
-
-            return RedirectToAction(nameof(Index));
+            return Redirect("/");
         }
+
+
+
+
 
         /*
          *      HABITAT ROUTES
@@ -165,8 +177,12 @@ namespace Botanio_MVC.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction(nameof(Index));
+            return Redirect("/");
         }
+
+
+
+
 
 
         /*
@@ -233,7 +249,7 @@ namespace Botanio_MVC.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction(nameof(Index));
+            return Redirect("/");
         }
 
 
