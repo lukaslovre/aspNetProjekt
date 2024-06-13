@@ -1,0 +1,38 @@
+﻿@model Botanio_MVC.Models.CareInstructions
+
+<div class="container mt-5">
+    <h2>Care Instructions Form</h2>
+    
+    <form asp-controller="Form" asp-action="AddCareInstructions" method="post">
+        <div class="form-group">
+            <label for="careInstructionsId">Care Instructions ID</label>
+            <input type="number" class="form-control" id="careInstructionsId" name="careInstructionsId" value="@Model.CareInstructionsId">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="@Model.Name" required>
+        </div>
+        <div class="form-group">
+            <label for="wateringInstructions">Watering Instructions</label>
+            <textarea class="form-control" id="wateringInstructions" name="wateringInstructions" required>@Model.WateringInstructions</textarea>
+        </div>
+        <div class="form-group">
+            <label for="sunlightInstructions">Sunlight Instructions</label>
+            <textarea class="form-control" id="sunlightInstructions" name="sunlightInstructions" required>@Model.SunlightInstructions</textarea>
+        </div>
+        <div class="form-group">
+            <label for="temperatureRangeLow">Temperature Range Low (°C)</label>
+            <input type="number" class="form-control" id="temperatureRangeLow" name="temperatureRangeLow" value="@Model.TemperatureRangeLow" required>
+        </div>
+        <div class="form-group">
+            <label for="temperatureRangeHigh">Temperature Range High (°C)</label>
+            <input type="number" class="form-control" id="temperatureRangeHigh" name="temperatureRangeHigh" value="@Model.TemperatureRangeHigh" required>
+        </div>
+        <div class="form-group">
+            <label for="pruningInstructions">Pruning Instructions</label>
+            <textarea class="form-control" id="pruningInstructions" name="pruningInstructions">@Model.PruningInstructions</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

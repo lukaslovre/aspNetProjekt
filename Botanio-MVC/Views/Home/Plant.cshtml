@@ -13,11 +13,11 @@
 
     <div class="row align-items-center g-0">
         <div class="col-md-6 left-side">
-            <img src="/img/@Model.ImageUrl" alt="Lotus S. Plantus" class="img-fluid">
+            <img src="/img/@Model.ImageUrl" alt="Couldn't load @Model.ImageUrl" class="img-fluid">
         </div>
         <div class="col-md-6" style="padding-left: 4rem;">
             <h2 style="font-size:2rem; font-weight:600;">@Model.Name</h2>
-            <h3 style="font-size: 1.5rem; color: #BFBFBF; font-style:italic">@Model.ScientificName</h3>
+            <h3 style="font-size: 1.5rem; color: #BFBFBF; font-style:italic">@Model.Species.ScientificName</h3>
             <div class="mb-3">
                 <span class="info-tags">@Model.Habitat.Climate</span>
                 <span class="info-tags">@Model.Habitat.Location</span>
@@ -30,7 +30,7 @@
                 <span class="care-icons">&#9728;</span> @Model.CareInstructions.SunlightInstructions
             </div>
             <div class="mb-3">
-                <span class="care-icons">🌡️</span> @Model.CareInstructions.TemperatureRangeLow °F - @Model.CareInstructions.TemperatureRangeHigh °F
+                <span class="care-icons">🌡️</span> @Model.CareInstructions.TemperatureRangeLow °C - @Model.CareInstructions.TemperatureRangeHigh °C
             </div>
             <div>
                 <span class="care-icons">✂️</span> @Model.CareInstructions.PruningInstructions

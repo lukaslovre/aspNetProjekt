@@ -169,6 +169,74 @@ namespace Botanio_MVC.Controllers
         }
 
 
+        /*
+         *     CARE INSTRUCTIONS ROUTES
+         */
+
+        // Render the care instructions form
+        // GET: /care-instructions/:id
+        [HttpGet("care-instructions/{id}")]
+        public async Task<IActionResult> CareInstructions(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Get care instructions from the database
+            var careInstructions = await _context.CareInstructions.FindAsync(id);
+
+            if (careInstructions == null)
+            {
+                return View("CareInstructionsForm", new CareInstructions());
+            }
+
+            // Return view with care instructions
+            return View("CareInstructionsForm", careInstructions);
+        }
+
+        // Add or update care instructions
+        // POST: /care-instructions
+        [HttpPost("care-instructions")]
+        public async Task<IActionResult> AddCareInstructions([FromForm] CareInstructions careInstructions)
+        {
+            // Check if the care instructions with the careInstructions.careInstructionsId already exists
+            var existingCareInstructions = await _context.CareInstructions.FindAsync(careInstructions.CareInstructionsId);
+
+            // If the care instructions do not exist, create a new care instructions
+            if (existingCareInstructions == null)
+            {
+                CareInstructions newCareInstructions = new CareInstructions
+                {
+                    Name = careInstructions.Name,
+                    WateringInstructions = careInstructions.WateringInstructions,
+                    SunlightInstructions = careInstructions.SunlightInstructions,
+                    TemperatureRangeLow = careInstructions.TemperatureRangeLow,
+                    TemperatureRangeHigh = careInstructions.TemperatureRangeHigh,
+                    PruningInstructions = careInstructions.PruningInstructions
+                };
+
+                _context.CareInstructions.Add(newCareInstructions);
+                _context.SaveChanges();
+
+            } else
+            {
+                // If the care instructions exist, update the existing care instructions
+                existingCareInstructions.Name = careInstructions.Name;
+                existingCareInstructions.WateringInstructions = careInstructions.WateringInstructions;
+                existingCareInstructions.SunlightInstructions = careInstructions.SunlightInstructions;
+                existingCareInstructions.TemperatureRangeLow = careInstructions.TemperatureRangeLow;
+                existingCareInstructions.TemperatureRangeHigh = careInstructions.TemperatureRangeHigh;
+                existingCareInstructions.PruningInstructions = careInstructions.PruningInstructions;
+
+                _context.CareInstructions.Update(existingCareInstructions);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
     }
 }
