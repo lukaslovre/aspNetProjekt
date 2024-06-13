@@ -15,7 +15,6 @@ namespace Botanio_MVC.Models
 
         public string Description { get; set; }
 
-        [Url]
         public string ImageUrl { get; set; }
 
 

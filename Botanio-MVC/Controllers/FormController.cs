@@ -22,24 +22,30 @@ namespace Botanio_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            // Get the first Plant from db
-            var plant = _context.Plants.FirstOrDefault();
+            //// Get the first Plant from db
+            //var plant = _context.Plants.FirstOrDefault();
 
-            var allSpecies = _context.Species.ToList();
-            var allHabitats = _context.Habitats.ToList();
-            var allCareInstructions = _context.CareInstructions.ToList();
+            //var allSpecies = _context.Species.ToList();
+            //var allHabitats = _context.Habitats.ToList();
+            //var allCareInstructions = _context.CareInstructions.ToList();
 
-            // Create a FormData object to hold the Plant and lists of Species, Habitats, and CareInstructions
-            var formData = new FormData
-            {
-                Plant = plant,
-                AllSpecies = allSpecies,
-                AllHabitats = allHabitats,
-                AllCareInstructions = allCareInstructions
-            };
+            //// Create a FormData object to hold the Plant and lists of Species, Habitats, and CareInstructions
+            //var formData = new FormData
+            //{
+            //    Plant = plant,
+            //    AllSpecies = allSpecies,
+            //    AllHabitats = allHabitats,
+            //    AllCareInstructions = allCareInstructions
+            //};
+
+            var plants = _context.Plants
+                .Include(p => p.Species)
+                .Include(p => p.Habitat)
+                .Include(p => p.CareInstructions)
+                .ToList();
 
 
-            return View("Index", formData);
+            return Json(plants);
         }
 
         // Route for specific plant
@@ -49,7 +55,7 @@ namespace Botanio_MVC.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Index));
             }
 
             // Get plant from the database
@@ -61,23 +67,11 @@ namespace Botanio_MVC.Controllers
 
             if (plant == null)
             {
-                return NotFound();
+                return View("Index", FormData.Empty(_context));
             }
 
-            // TODO: Staviti kasnije ovo u metodu, pošto se ponavlja
-            var allSpecies = _context.Species.ToList();
-            var allHabitats = _context.Habitats.ToList();
-            var allCareInstructions = _context.CareInstructions.ToList();
-
-            // Create a FormData object to hold the Plant and lists of Species, Habitats, and CareInstructions
-            var formData = new FormData
-            {
-                Plant = plant,
-                AllSpecies = allSpecies,
-                AllHabitats = allHabitats,
-                AllCareInstructions = allCareInstructions
-            };
-
+            FormData formData = FormData.Empty(_context);
+            formData.Plant = plant;
 
             // Return view with plant
             return View("Index", formData);
@@ -88,18 +82,46 @@ namespace Botanio_MVC.Controllers
         [HttpPost("plant")]
         public async Task<IActionResult> AddPlant([FromForm] Plant plant)
         {
-            // For testing, just return the plant object that was passed in
-            return Json(plant);
+            // Check if the plant with the plant.plantId already exists
+            var existingPlant = await _context.Plants.FindAsync(plant.PlantId);
+
+            // If the plant does not exist, create a new plant
+            if (existingPlant == null)
+            {
+                Plant newPlant = new Plant
+                {
+                    Name = plant.Name,
+                    ScientificName = plant.ScientificName,
+                    Description = plant.Description,
+                    ImageUrl = plant.ImageUrl,
+                    SpeciesId = plant.SpeciesId,
+                    HabitatId = plant.HabitatId,
+                    CareInstructionsId = plant.CareInstructionsId
+                };
+
+                _context.Plants.Add(newPlant);
+                _context.SaveChanges();
+
+            } else
+            {
+                // If the plant exists, update the existing plant
+                existingPlant.Name = plant.Name;
+                existingPlant.ScientificName = plant.ScientificName;
+                existingPlant.Description = plant.Description;
+                existingPlant.ImageUrl = plant.ImageUrl;
+                existingPlant.SpeciesId = plant.SpeciesId;
+                existingPlant.HabitatId = plant.HabitatId;
+                existingPlant.CareInstructionsId = plant.CareInstructionsId;
+
+                _context.Plants.Update(existingPlant);
+                _context.SaveChanges();
+            }
 
 
-            //if (ModelState.IsValid)
-            //{
-            //    _context.Add(plant);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //return View(plant);
+            return RedirectToAction(nameof(Index));
         }
+
+
 
 
         [HttpGet("privacy")]
