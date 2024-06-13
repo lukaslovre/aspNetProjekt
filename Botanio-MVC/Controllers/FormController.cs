@@ -83,6 +83,25 @@ namespace Botanio_MVC.Controllers
             return View("Index", formData);
         }
 
+        // Add new plant to the database
+        // POST: /plant
+        [HttpPost("plant")]
+        public async Task<IActionResult> AddPlant([FromForm] Plant plant)
+        {
+            // For testing, just return the plant object that was passed in
+            return Json(plant);
+
+
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(plant);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(plant);
+        }
+
+
         [HttpGet("privacy")]
         public IActionResult Privacy()
         {

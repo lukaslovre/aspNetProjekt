@@ -3,7 +3,8 @@
 
 <div class="container mt-5">
     <h2>Plant Form</h2>
-    <form>
+    @* Send a POST request to /form/plant, or maybe use the ASP.NET core way to specify that it is FormController.cs -> AddPlant method *@
+    <form asp-controller="Form" asp-action="AddPlant" method="post">
         <div class="form-group">
             <label for="plantId">Plant ID</label>
             <input type="number" class="form-control" id="plantId" name="plantId" value="@Model.Plant.PlantId">
@@ -22,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="imageUrl">Image URL</label>
-            <input type="url" class="form-control" id="imageUrl" name="imageUrl" value="@Model.Plant.ImageUrl" />
+            <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="@Model.Plant.ImageUrl" />
         </div>
         <div class="form-group">
             <label for="speciesId">Species</label>
