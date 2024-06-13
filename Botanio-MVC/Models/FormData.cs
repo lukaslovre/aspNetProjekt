@@ -24,10 +24,6 @@ namespace Botanio_MVC.Models
             };
         }
 
-        //var allSpecies = _context.Species.ToList();
-        //var allHabitats = _context.Habitats.ToList();
-        //var allCareInstructions = _context.CareInstructions.ToList();
-
         // Generate 3 methods, one for each of the lists in FormData, it takes an context as argument, and gets all the items from that table
         public static List<Species> GetAllSpecies(ApplicationDbContext context)
         {

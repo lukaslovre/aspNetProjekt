@@ -22,22 +22,6 @@ namespace Botanio_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            //// Get the first Plant from db
-            //var plant = _context.Plants.FirstOrDefault();
-
-            //var allSpecies = _context.Species.ToList();
-            //var allHabitats = _context.Habitats.ToList();
-            //var allCareInstructions = _context.CareInstructions.ToList();
-
-            //// Create a FormData object to hold the Plant and lists of Species, Habitats, and CareInstructions
-            //var formData = new FormData
-            //{
-            //    Plant = plant,
-            //    AllSpecies = allSpecies,
-            //    AllHabitats = allHabitats,
-            //    AllCareInstructions = allCareInstructions
-            //};
-
             var plants = _context.Plants
                 .Include(p => p.Species)
                 .Include(p => p.Habitat)
@@ -123,12 +107,6 @@ namespace Botanio_MVC.Controllers
 
 
 
-
-        [HttpGet("privacy")]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
     }
 }
