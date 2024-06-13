@@ -18,12 +18,23 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav text-uppercase" style="margin-left:auto">
+                    <ul class="navbar-nav" style="margin-left:auto">
+
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                New
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Form" asp-action="Plant" asp-route-id="0">New plant</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Form" asp-action="Habitat" asp-route-id="0">New habitat</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Form" asp-action="CareInstructions" asp-route-id="0">New care instructions</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -35,7 +46,6 @@
             @RenderBody()
         </main>
     </div>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

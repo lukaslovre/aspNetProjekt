@@ -22,7 +22,15 @@ body {
     margin-bottom: 60px;
 }
 
-*{
+.navbar .dropdown .dropdown-menu {
+    background-color: #4f4830;
+}
+.navbar .dropdown .dropdown-menu a.dropdown-item {
+    color: white;
+    background-color: inherit;
+}
+
+* {
     color: white;
 }
 
