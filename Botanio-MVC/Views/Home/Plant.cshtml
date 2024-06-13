@@ -5,9 +5,15 @@
 }
 
 <div class="container-fluid py-5">
+    <div class="align-end" style="margin-bottom:3rem;">
+        <a href="/form/plant/@Model.PlantId" class="btn btn-primary">Edit</a>
+    </div>
+
+
+
     <div class="row align-items-center g-0">
         <div class="col-md-6 left-side">
-            <img src="@Model.ImageUrl" alt="Lotus S. Plantus" class="img-fluid">
+            <img src="/img/@Model.ImageUrl" alt="Lotus S. Plantus" class="img-fluid">
         </div>
         <div class="col-md-6" style="padding-left: 4rem;">
             <h2 style="font-size:2rem; font-weight:600;">@Model.Name</h2>

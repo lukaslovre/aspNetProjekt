@@ -63,6 +63,7 @@ namespace Botanio_MVC.Data
                 new CareInstructions
                 {
                     CareInstructionsId = 1,
+                    Name = "Basic Care Instructions",
                     WateringInstructions = "Water when the top inch of soil is dry.",
                     SunlightInstructions = "Bright, indirect light.",
                     TemperatureRangeLow = 65,
@@ -72,6 +73,7 @@ namespace Botanio_MVC.Data
                 new CareInstructions
                 {
                     CareInstructionsId = 2,
+                    Name = "For Tropical Plants",
                     WateringInstructions = "Water sparingly.",
                     SunlightInstructions = "Bright, direct light.",
                     TemperatureRangeLow = 70,
@@ -87,7 +89,7 @@ namespace Botanio_MVC.Data
                     Name = "Fiddle Leaf Fig",
                     ScientificName = "Ficus lyrata",
                     Description = "The Fiddle Leaf Fig is a popular indoor plant featuring large, violin-shaped leaves.",
-                    ImageUrl = "https://via.placeholder.com/150",
+                    ImageUrl = "fiddle-leaf-fig",
                     SpeciesId = 1,
                     HabitatId = 1,
                     CareInstructionsId = 1
@@ -98,7 +100,7 @@ namespace Botanio_MVC.Data
                     Name = "Swiss Cheese Plant",
                     ScientificName = "Monstera deliciosa",
                     Description = "The Swiss Cheese Plant is a tropical plant with large, glossy leaves that develop holes as they mature.",
-                    ImageUrl = "https://via.placeholder.com/150",
+                    ImageUrl = "SwissCheese.png",
                     SpeciesId = 2,
                     HabitatId = 1,
                     CareInstructionsId = 2
