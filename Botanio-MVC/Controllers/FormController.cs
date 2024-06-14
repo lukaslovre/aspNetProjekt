@@ -105,6 +105,21 @@ namespace Botanio_MVC.Controllers
             if (habitat == null)
                 return BadRequest();
 
+            if (!ModelState.IsValid)
+            {
+                // Log exactly what field causing the ModelState to be invalid
+                foreach (var key in ModelState.Keys)
+                {
+                    if (ModelState[key].Errors.Count > 0)
+                    {
+                        // Print
+                        Console.WriteLine($"Field {key} is invalid: {ModelState[key].Errors[0].ErrorMessage}");
+                    }
+                }
+
+                return View("HabitatForm", habitat);
+            }
+
             await AddOrUpdateEntity(_context.Habitats, habitat, habitat.HabitatId);
             return Redirect("/");
         }
@@ -126,6 +141,21 @@ namespace Botanio_MVC.Controllers
         {
             if (instructions == null)
                 return BadRequest();
+
+            if (!ModelState.IsValid)
+            {
+                // Log exactly what field causing the ModelState to be invalid
+                foreach (var key in ModelState.Keys)
+                {
+                    if (ModelState[key].Errors.Count > 0)
+                    {
+                        // Print
+                        Console.WriteLine($"Field {key} is invalid: {ModelState[key].Errors[0].ErrorMessage}");
+                    }
+                }
+
+                return View("CareInstructionsForm", instructions);
+            }
 
             await AddOrUpdateEntity(_context.CareInstructions, instructions, instructions.CareInstructionsId);
             return Redirect("/");
