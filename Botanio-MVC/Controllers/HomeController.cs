@@ -17,7 +17,7 @@ namespace Botanio_MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            
+
 
             try
             {
@@ -31,7 +31,8 @@ namespace Botanio_MVC.Controllers
 
                 // Return view with plants
                 return View(plants);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return Json(ex.Message);
             }

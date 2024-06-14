@@ -10,7 +10,8 @@
         @foreach (var plant in Model)
         {
             <div class="col-md-6">
-                @Html.Partial("Plant_card_component", plant)
+                @* @Html.Partial("Plant_card_component", plant) *@
+                <partial name="Plant_card_component" model="plant"/>
             </div>
         }
     </div>

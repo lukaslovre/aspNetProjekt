@@ -34,7 +34,7 @@ namespace Botanio_MVC.Controllers
         public async Task<IActionResult> Plant(int? id)
         {
             if (id == null)
-                return RedirectToAction(nameof(Index));
+                return View("PlantForm", FormData.Empty(_context));
 
             Plant? plant = await _context.Plants
                 .Include(p => p.Species)
@@ -71,7 +71,7 @@ namespace Botanio_MVC.Controllers
         public async Task<IActionResult> Habitat(int? id)
         {
             if (id == null)
-                return RedirectToAction(nameof(Index));
+                return View("HabitatForm", new Habitat());
 
             var habitat = await _context.Habitats.FindAsync(id);
             return View("HabitatForm", habitat ?? new Habitat());
@@ -93,7 +93,7 @@ namespace Botanio_MVC.Controllers
         public async Task<IActionResult> CareInstructions(int? id)
         {
             if (id == null)
-                return RedirectToAction(nameof(Index));
+                return View("CareInstructionsForm", new CareInstructions());
 
             var instructions = await _context.CareInstructions.FindAsync(id);
             return View("CareInstructionsForm", instructions ?? new CareInstructions());
