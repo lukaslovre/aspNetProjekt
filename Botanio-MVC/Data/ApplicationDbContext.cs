@@ -1,4 +1,4 @@
-﻿using Botanio_MVC.Models;
+﻿using Botanio_MVC.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;

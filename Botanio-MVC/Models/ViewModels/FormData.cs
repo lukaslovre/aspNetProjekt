@@ -1,7 +1,8 @@
 ﻿using Botanio_MVC.Data;
+using Botanio_MVC.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Botanio_MVC.Models
+namespace Botanio_MVC.Models.ViewModels
 {
     public class FormData
     {

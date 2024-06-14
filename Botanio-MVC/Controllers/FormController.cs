@@ -1,5 +1,6 @@
 using Botanio_MVC.Data;
-using Botanio_MVC.Models;
+using Botanio_MVC.Models.Domain;
+using Botanio_MVC.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -61,6 +62,26 @@ namespace Botanio_MVC.Controllers
         {
             if (plant == null)
                 return BadRequest();
+
+            if (!ModelState.IsValid)
+            {
+                // Log exactly what field causing the ModelState to be invalid
+                foreach (var key in ModelState.Keys)
+                {
+                    if (ModelState[key].Errors.Count > 0)
+                    {
+                        // Print
+                        Console.WriteLine($"Field {key} is invalid: {ModelState[key].Errors[0].ErrorMessage}");
+                    }
+                }
+
+
+
+
+                FormData formData = FormData.Empty(_context);
+                formData.Plant = plant;
+                return View("PlantForm", formData);
+            }
 
             await AddOrUpdateEntity(_context.Plants, plant, plant.PlantId);
             return Redirect("/");

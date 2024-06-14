@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Botanio_MVC.Models
+namespace Botanio_MVC.Models.Domain
 {
     public class Plant
     {

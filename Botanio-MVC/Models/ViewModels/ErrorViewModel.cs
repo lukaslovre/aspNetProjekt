@@ -1,4 +1,4 @@
-namespace Botanio_MVC.Models
+namespace Botanio_MVC.Models.ViewModels
 {
     public class ErrorViewModel
     {
