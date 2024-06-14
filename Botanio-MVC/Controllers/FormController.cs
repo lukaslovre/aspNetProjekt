@@ -30,7 +30,7 @@ namespace Botanio_MVC.Controllers
         }
 
         // GET: /form/plant/:id
-        [HttpGet("plant/{id}")]
+        [HttpGet("plant/{id?}")]
         public async Task<IActionResult> Plant(int? id)
         {
             if (id == null)
@@ -67,7 +67,7 @@ namespace Botanio_MVC.Controllers
         }
 
         // GET: /form/habitat/:id
-        [HttpGet("habitat/{id}")]
+        [HttpGet("habitat/{id?}")]
         public async Task<IActionResult> Habitat(int? id)
         {
             if (id == null)
@@ -89,7 +89,7 @@ namespace Botanio_MVC.Controllers
         }
 
         // GET: /form/care-instructions/:id
-        [HttpGet("care-instructions/{id}")]
+        [HttpGet("care-instructions/{id?}")]
         public async Task<IActionResult> CareInstructions(int? id)
         {
             if (id == null)
