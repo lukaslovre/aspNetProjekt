@@ -13,8 +13,9 @@ namespace Botanio_MVC.Models.Domain
         [Required]
         public string CommonName { get; set; }
 
+        [Required]
         public string Origin { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace Botanio_MVC.Models.Domain
         [Required]
         public int TemperatureRangeHigh { get; set; }
 
+        [Required]
         public string PruningInstructions { get; set; }
     }
 }

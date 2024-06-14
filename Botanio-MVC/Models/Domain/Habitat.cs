@@ -10,10 +10,12 @@ namespace Botanio_MVC.Models.Domain
         [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Climate { get; set; }
 
+        [Required]
         public string Location { get; set; }
 
-        public string SoilType { get; set; }
+        public string? SoilType { get; set; }
     }
 }
